@@ -1,0 +1,16 @@
+function maxItemAssociation(current_order, old_order){
+  let result = new Array();
+  for (let i = 0; i < old_order.length; i++){
+    if (Array.isArray(old_order[i])){
+      for (let z =0; z< old_order[i].length; z++){
+        if(current_order.includes(old_order[i][z])){
+          result = result.concat(old_order[i]);
+        }
+      }
+    }
+    else if(current_order.includes(old_order[i])){
+      result = result.concat(old_order[i]);
+    }
+  }
+  return new Set (result.sort());
+}
