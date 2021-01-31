@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<script>
+    function getPath(elem){
+        try{
+            if(elem == ''){
+                throw ('Пустой идентификатор элемента');
+            }
+            else if(!checkElemCount(elem)){
+                throw ('Найдено более одного элемента. Уточните запрос');
+            }
+            let parentList = document.querySelectorAll(elem);
+            let parElement = (parentList[0].parentElement.className != '') ? 
+            `.${parentList[0].parentElement.className}` : (parentList[0].parentElement.id != '' ?
+            `#${parentList[0].parentElement.id}`: parentList[0].parentElement.localName);
+            let currentPath = elem;
+            if(document.querySelectorAll(parElement)[0].parentElement != null){
+                currentPath = getPath(parElement)+' '+currentPath;
+            }
+            return currentPath;
+        }catch(e){
+            console.log(e);
+        }
+    }
+
+    function checkElemCount(elem){
+        return (document.querySelectorAll(elem).length == 1) ? true : false;
+    }
+</script>
+<html>
+    <body>
+        <div id="dumbledoreTeam">
+            <h2>Команда Дамблдора</h2>
+            <div class='harry'>
+                <p class="name"><h3>Harry Potter</h3></p>
+                <span class="topSpells">Заклинания
+                    <ul>
+                        <li class='LumusMaxima'>Lumus Maxima</li>
+                        <li class='AvadaCedavra'>Avada Cedavra</li>
+                        <li class='Cruciatus'>Cruciatus</li>
+                    </ul>
+                </span>
+            </div>
+            <div class='hermyone'>
+                <p class="name"><h3>Hermione Granger</h3></p>
+                <span class="topSpells">Заклинания
+                    <ul>
+                        <li class='AvadaCedavra'>Avada Cedavra</li>
+                        <li class='Alahomora'>Alahomora</li>
+                        <li class='Cruciatus'>Cruciatus</li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+        <div id="darkLordTeam">
+            <h2>Команда Темного Лорда</h2>
+            <div class='draco'>
+                <p class="name"><h3>Draco Malfoy</h3></p>
+                <span class="topSpells">Заклинания
+                    <ul>
+                        <li class='Oppunio'>Oppunio</li>
+                        <li class='AvadaCedavra'>Avada Cedavra</li>
+                        <li class='Imperuis'>Imperuis</li>
+                    </ul>
+                </span>
+            </div>
+            <div class='severus'>
+                <p class="name"><h3>Severus Snape</h3></p>
+                <span class="topSpells">Заклинания
+                    <ul>
+                        <li class='Patronus'>Patronus</li>
+                        <li class='AvadaCedavra'>Avada Cedavra</li>
+                        <li class='Condues'>Condues</li>
+                    </ul>
+                </span>
+            </div>
+            <div class='nagayna'>
+                <p class="name"><h3>Nagayna</h3></p>
+                <span class="topSpells">Заклинания
+                    <ul>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
