@@ -1,0 +1,40 @@
+mutation{
+  createProduct(id: 20, name: "SEGA MEGA DRIVE", count: 1, price: 9999){
+    id,
+    name,
+    count,
+    price,
+    country,
+    category_id
+    }
+    deleteProduct(id: 7){
+        id
+    }
+    changeCount(id: 7, newCount: 555){
+    id,
+    count,
+    name
+  }
+    changePrice(id: 9, newPrice: 9999){
+    id, name,
+    price, count
+  }
+}
+
+query {
+  Categories{
+    id,
+    name,
+    parent_id
+  },
+  Products{
+    name,
+    category_id,
+    price,
+    count
+  }
+  Reviews{
+    username,
+    text,rate, product_id
+  }
+}

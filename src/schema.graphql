@@ -1,0 +1,35 @@
+type Query {
+  Categories: [Categories!]!
+  Products: [Products],
+  Reviews: [Reviews]
+}
+
+type Categories {
+    id: ID!
+    name: String!
+    parent_id: ID
+}
+
+type Products{
+	id: ID!,
+	name: String!,
+	count: Int,
+	price: Int!,
+	country: String,
+	category_id: ID
+}
+
+type Reviews {
+    id: ID!
+    username: String!
+    rate: ID !,
+    product_id: ID!,
+    text: String
+}
+
+type Mutation {
+  createProduct(id: ID!, name: String!, count: Int, price: Int!, country:String, category_id:ID): Products
+  deleteProduct(id: ID!): Products
+  changeCount(id: ID!, newCount: Int!): Products
+  changePrice(id: ID!, newPrice: Int!): Products
+}
